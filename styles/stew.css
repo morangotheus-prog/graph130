@@ -1,0 +1,52 @@
+/* External CSS - Linked from HTML document */
+
+/* General styling */
+* {
+    box-sizing: border-box;
+}
+
+/* Float image styling - floats left as required */
+.float-image {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+/* Additional notes section styling */
+.additional-notes {
+    background-color: #fef6e4;
+    border-left: 4px solid #8b4513;
+    padding: 20px;
+    margin-top: 30px;
+    border-radius: 5px;
+}
+
+.additional-notes p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    .intro-section,
+    .recipe-section {
+        padding: 20px;
+    }
+    
+    .float-image {
+        float: none;
+        display: block;
+        margin: 0 auto 20px auto;
+        width: 100%;
+        max-width: 350px;
+    }
+    
+    h1 {
+        font-size: 2rem !important;
+    }
+}

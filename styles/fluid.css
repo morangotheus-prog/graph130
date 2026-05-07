@@ -1,0 +1,620 @@
+/* =====================================================
+   fluid.css  —  Fluid Project Stylesheet
+   Units covered: %, em, rem, box-sizing, vw
+   Framework: Pure.css (CDN)
+===================================================== */
+
+
+/* ─────────────────────────────────────────────────────
+   BOX-SIZING global reset
+   This is also the BOX-SIZING experiment:
+   border-box means padding + border live INSIDE
+   the declared width — no math surprises.
+───────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   ROOT  —  16px anchors all rem values on the page
+───────────────────────────────────────────────────── */
+:root {
+  font-size: 16px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Source Sans 3', sans-serif;
+  background: #f2f4f6;
+  color: #1a1a2e;
+}
+
+a { color: #1565c0; }
+
+code {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.88em;
+  background: rgba(0,0,0,0.07);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   PURE.CSS NAV  —  tucked vertical responsive menu
+───────────────────────────────────────────────────── */
+.custom-nav {
+  background: url('bruce-lee.jpg') center / cover no-repeat, #0d1b2a;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.nav-brand {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.3rem;
+  color: #fff;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.85rem 0;
+  flex-shrink: 0;
+}
+
+.nav-hamburger {
+  display: none;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  padding: 0.28rem 0.6rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.nav-links li a {
+  display: block;
+  padding: 0.85rem 1rem;
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: 'Oswald', sans-serif;
+  transition: color 0.2s, background 0.2s;
+}
+
+.nav-links li a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.07);
+}
+
+@media (max-width: 768px) {
+  .nav-hamburger { display: block; }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    background: #0d1b2a;
+  }
+
+  .nav-links.open { max-height: 500px; }
+
+  .nav-links li a {
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+}
+
+
+/* ─────────────────────────────────────────────────────
+   HERO  —  bruce-lee.jpg background
+   VW:  width 100vw, min-height 72vh, clamp with vw
+   %:   padding 5% 8%
+───────────────────────────────────────────────────── */
+.hero {
+  width: 100vw;
+  min-height: 72vh;
+  background:
+    linear-gradient(to bottom, rgba(8,14,28,0.5) 0%, rgba(8,14,28,0.82) 100%),
+    url('bruce-lee.jpg') center / cover no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 5% 8%;
+}
+
+.hero h1 {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  color: #fff;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin: 0 0 0.35em;
+  line-height: 1;
+}
+
+.hero .hero-intro {
+  font-size: clamp(1rem, 2.4vw, 1.3rem);
+  color: rgba(255,255,255,0.8);
+  max-width: 56ch;
+  line-height: 1.75;
+  margin: 0 auto 1.5em;
+}
+
+.hero .hero-quote {
+  font-size: clamp(0.78rem, 1.6vw, 0.95rem);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  font-style: normal;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   SHARED section elements
+───────────────────────────────────────────────────── */
+.s-tag {
+  display: inline-block;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 0.28em 0.8em;
+  border-radius: 2px;
+  margin-bottom: 0.9em;
+}
+
+.s-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin: 0 0 0.55em;
+  line-height: 1.1;
+}
+
+.s-body {
+  font-size: 1.05rem;
+  line-height: 1.82;
+  max-width: 68ch;
+}
+
+.s-body p { margin: 0 0 0.9em; }
+
+hr.divider {
+  border: none;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin: 0;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   SECTION 1 — PERCENTAGE
+   Sizing technique: width, padding, margin, gap in %
+───────────────────────────────────────────────────── */
+#percentages {
+  background:
+    linear-gradient(rgba(235,243,255,0.91), rgba(235,243,255,0.91)),
+    url('fluid01.jpg') center / cover no-repeat;
+  padding: 5% 8%;
+}
+
+#percentages .s-tag  { background: #1565c0; color: #fff; }
+#percentages .s-title { color: #0d1b2a; }
+#percentages .s-body  { color: #334; }
+
+.pct-demo {
+  margin-top: 3%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+}
+
+.pct-block {
+  background: rgba(21,101,192,0.1);
+  border-left: 4px solid #1565c0;
+  padding: 2.5% 3%;
+  margin-bottom: 2%;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.78rem;
+  color: #1565c0;
+}
+
+.pct-block.w100 { width: 100%; }
+.pct-block.w75  { width: 74%; }
+.pct-block.w50  { width: 49%; }
+.pct-block.w25  { width: 23.5%; }
+
+.pct-bar-wrap {
+  background: rgba(21,101,192,0.15);
+  height: 7px;
+  border-radius: 4px;
+  margin-top: 0.5em;
+}
+
+.pct-bar-fill {
+  height: 7px;
+  background: #1565c0;
+  border-radius: 4px;
+}
+
+.pct-note {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.7rem;
+  color: #888;
+  margin: 0.5rem 0 0;
+}
+
+@media (max-width: 620px) {
+  .pct-block.w75,
+  .pct-block.w50,
+  .pct-block.w25 { width: 100%; }
+}
+
+
+/* ─────────────────────────────────────────────────────
+   SECTION 2 — EM
+   Sizing technique: font-size, padding, gap in em
+───────────────────────────────────────────────────── */
+#em-section {
+  background:
+    linear-gradient(rgba(4,10,22,0.84), rgba(4,10,22,0.84)),
+    url('fluid02.jpg') center / cover no-repeat;
+  padding: 5em 8%;
+  color: #e8f0fb;
+}
+
+#em-section .s-tag  { background: #00acc1; color: #000; }
+#em-section .s-title { color: #fff; }
+#em-section .s-body  { color: rgba(232,240,251,0.72); }
+
+.em-scale {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1.5em;
+  margin-top: 2.5em;
+}
+
+.em-box {
+  border: 2px solid #00acc1;
+  color: #fff;
+  font-family: 'Source Code Pro', monospace;
+  text-align: center;
+  background: rgba(0,172,193,0.1);
+  line-height: 1.35;
+}
+
+.em-box.s1 { font-size: 0.75em; padding: 1em 1.3em; }
+.em-box.s2 { font-size: 1em;    padding: 1em 1.3em; }
+.em-box.s3 { font-size: 1.5em;  padding: 1em 1.3em; }
+.em-box.s4 { font-size: 2em;    padding: 1em 1.3em; }
+
+.em-box span {
+  display: block;
+  font-size: 0.62em;
+  opacity: 0.5;
+  margin-top: 0.5em;
+}
+
+.em-note {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.68em;
+  color: rgba(200,230,255,0.32);
+  margin-top: 1.8em;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   SECTION 3 — REM
+   Sizing technique: all sizes in rem (:root = 16px)
+───────────────────────────────────────────────────── */
+#rem-section {
+  background:
+    linear-gradient(rgba(242,252,245,0.92), rgba(242,252,245,0.92)),
+    url('fluid03.jpg') center / cover no-repeat;
+  padding: 5rem 8%;
+}
+
+#rem-section .s-tag  { background: #2e7d32; color: #fff; }
+#rem-section .s-title { color: #0d1b2a; }
+#rem-section .s-body  { color: #334; }
+
+.rem-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.rem-card {
+  flex: 1 1 17rem;
+  background: #fff;
+  border-top: 4px solid #2e7d32;
+  padding: 1.75rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.rem-card h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.25rem;
+  color: #0d1b2a;
+  margin: 0 0 0.75rem;
+}
+
+.rem-card p {
+  font-size: 0.9375rem;
+  color: #556;
+  line-height: 1.75;
+  margin: 0 0 0.75rem;
+}
+
+.rem-card .rem-code {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.78rem;
+  background: #f0f6f0;
+  color: #2e7d32;
+  padding: 0.6rem 0.85rem;
+  display: block;
+  border-radius: 3px;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   SECTION 4 — BOX-SIZING
+   Sizing technique: content-box vs border-box visual
+───────────────────────────────────────────────────── */
+#box-sizing {
+  background:
+    linear-gradient(rgba(12,9,6,0.88), rgba(12,9,6,0.88)),
+    url('fluid04.jpg') center / cover no-repeat;
+  padding: 5% 8%;
+  color: #ede8e0;
+}
+
+#box-sizing .s-tag  { background: #e64a19; color: #fff; }
+#box-sizing .s-title { color: #fff; }
+#box-sizing .s-body  { color: rgba(237,232,224,0.68); }
+
+.bs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.bs-panel {
+  flex: 1 1 250px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 1.5rem;
+}
+
+.bs-panel h4 {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #e64a19;
+  margin: 0 0 1rem;
+}
+
+.box-content {
+  box-sizing: content-box;
+  width: 180px;
+  padding: 18px;
+  border: 10px solid #e64a19;
+  background: rgba(230,74,25,0.1);
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.7rem;
+  color: rgba(237,232,224,0.78);
+  text-align: center;
+  line-height: 1.85;
+}
+
+.box-border {
+  box-sizing: border-box;
+  width: 180px;
+  padding: 18px;
+  border: 10px solid #66bb6a;
+  background: rgba(102,187,106,0.1);
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.7rem;
+  color: rgba(237,232,224,0.78);
+  text-align: center;
+  line-height: 1.85;
+}
+
+.bs-note {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.66rem;
+  color: rgba(237,232,224,0.32);
+  margin-top: 0.7rem;
+}
+
+.bs-panel-text {
+  font-size: 0.85rem;
+  color: rgba(237,232,224,0.6);
+  line-height: 1.75;
+  margin: 0 0 1rem;
+}
+
+.bs-pre {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.72rem;
+  background: rgba(255,255,255,0.05);
+  color: #e64a19;
+  padding: 0.85rem 1rem;
+  border-radius: 3px;
+  margin: 0;
+  line-height: 1.8;
+  overflow: auto;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   SECTION 5 — VW
+   Sizing technique: width, padding, font-size in vw
+───────────────────────────────────────────────────── */
+#vw-section {
+  width: 100vw;
+  background:
+    linear-gradient(150deg, rgba(0,25,55,0.88) 0%, rgba(0,70,110,0.78) 100%),
+    url('fluid05.jpg') center / cover no-repeat;
+  padding: 7vw 8vw;
+  color: #fff;
+}
+
+#vw-section .s-tag { background: #fff; color: #00254f; }
+
+#vw-section .s-title {
+  font-size: clamp(2rem, 5vw, 3.8rem);
+  color: #fff;
+}
+
+#vw-section .s-body { color: rgba(255,255,255,0.68); }
+
+.vw-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6vw;
+  margin-top: 3vw;
+}
+
+.vw-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5vw;
+}
+
+.vw-lbl {
+  font-family: 'Source Code Pro', monospace;
+  font-size: clamp(0.58rem, 1.3vw, 0.82rem);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  width: 8vw;
+  min-width: 52px;
+  text-align: right;
+  color: rgba(255,255,255,0.42);
+  flex-shrink: 0;
+}
+
+.vw-fill {
+  height: clamp(13px, 2.4vw, 34px);
+  background: rgba(255,255,255,0.82);
+  border-radius: 2px;
+}
+
+.vw-val {
+  font-family: 'Source Code Pro', monospace;
+  font-size: clamp(0.58rem, 1.1vw, 0.78rem);
+  color: rgba(255,255,255,0.35);
+  flex-shrink: 0;
+}
+
+.vw-note {
+  font-family: 'Source Code Pro', monospace;
+  font-size: clamp(0.58rem, 1.1vw, 0.76rem);
+  color: rgba(255,255,255,0.25);
+  margin-top: 3vw;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   PURE.CSS GRID SHOWCASE
+───────────────────────────────────────────────────── */
+#pure-section {
+  background:
+    linear-gradient(rgba(245,248,255,0.93), rgba(245,248,255,0.93)),
+    url('fluid06.jpg') center / cover no-repeat;
+  padding: 5% 8%;
+}
+
+#pure-section .s-tag  { background: #6a1b9a; color: #fff; }
+#pure-section .s-title { color: #0d1b2a; }
+
+.pure-grid-intro {
+  font-size: 1.02rem;
+  color: #445;
+  line-height: 1.8;
+  max-width: 68ch;
+  margin-bottom: 2.5rem;
+}
+
+.p-card {
+  background: #fff;
+  border: 1px solid #dde5ef;
+  overflow: hidden;
+  height: 100%;
+  transition: box-shadow 0.2s;
+}
+
+.p-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+
+.p-card img {
+  width: 100%;
+  height: 175px;
+  object-fit: cover;
+  display: block;
+}
+
+.p-card-body { padding: 1.25rem; }
+
+.p-card-body h3 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.15rem;
+  margin: 0 0 0.45rem;
+  color: #0d1b2a;
+}
+
+.p-card-body p {
+  font-size: 0.875rem;
+  color: #556;
+  margin: 0;
+  line-height: 1.65;
+}
+
+
+/* ─────────────────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────────────────── */
+footer {
+  background: #080e1a;
+  color: rgba(255,255,255,0.38);
+  text-align: center;
+  padding: 2.5rem 5%;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 1.5px;
+}
+
+footer strong { color: rgba(255,255,255,0.65); }
+footer a { color: rgba(255,255,255,0.38); text-decoration: none; }
+footer a:hover { color: rgba(255,255,255,0.6); }

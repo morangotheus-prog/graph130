@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fluid Project</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/grids-responsive-min.css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;1,400&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="fluid.css" />
+</head>
+<body>
+
+<nav class="custom-nav" role="navigation">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#">Fluid Project</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">&#9776;</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#percentages">% Percent</a></li>
+      <li><a href="#em-section">em</a></li>
+      <li><a href="#rem-section">rem</a></li>
+      <li><a href="#box-sizing">Box-Sizing</a></li>
+      <li><a href="#vw-section">vw</a></li>
+      <li><a href="#pure-section">Grid</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <h1>Fluid Project</h1>
+  <p class="hero-intro">
+    Fluid design is a design approach that allows for flexible layouts and elements
+    that adapt to different screen sizes and resolutions. It uses relative units of
+    measurement &mdash; <strong>%, em, rem, vw</strong> &mdash; instead of fixed pixels,
+    so content reshapes to fit any viewport.
+  </p>
+  <p class="hero-quote">
+    &ldquo;Notice that the stiffest tree is most easily cracked,<br />
+    while the bamboo or willow survives by bending with the wind.&rdquo; &mdash; Bruce Lee
+  </p>
+</header>
+
+<section id="percentages">
+  <span class="s-tag">01 &mdash; CSS Unit</span>
+  <h2 class="s-title">Percentage</h2>
+  <div class="s-body">
+    <p>The percentage CSS data types represent a percentage value. Many CSS properties can take
+    percentage values, often to define sizes in terms of parent objects. Percentages are formed
+    by a number immediately followed by the percentage sign <code>%</code>. Just as is the case
+    with all other units in CSS, there isn't a space between the <code>%</code> and the number.</p>
+    <p>Many length properties use percentages, such as <code>width</code>, <code>margin</code>
+    and <code>padding</code>. Percentages can also be seen in <code>font-size</code>, where the
+    size of the text is directly related to the size of its parent.
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/percentage" target="_blank">MDN: CSS percentage &rarr;</a></p>
+  </div>
+  <div class="pct-demo">
+    <div class="pct-block w100">width: 100%<div class="pct-bar-wrap"><div class="pct-bar-fill" style="width:100%;"></div></div></div>
+    <div class="pct-block w75">width: 75%<div class="pct-bar-wrap"><div class="pct-bar-fill" style="width:100%;"></div></div></div>
+    <div class="pct-block w50">width: 50%<div class="pct-bar-wrap"><div class="pct-bar-fill" style="width:100%;"></div></div></div>
+    <div class="pct-block w25">width: 25%<div class="pct-bar-wrap"><div class="pct-bar-fill" style="width:100%;"></div></div></div>
+  </div>
+  <p class="pct-note">&#8593; Resize your browser &mdash; each block's width is a percentage of its parent.</p>
+</section>
+
+<hr class="divider" />
+
+<section id="em-section">
+  <span class="s-tag">02 &mdash; CSS Unit</span>
+  <h2 class="s-title">Em</h2>
+  <div class="s-body">
+    <p>An em is a unit in the field of typography, equal to the currently specified point size.
+    For example, one em in a 16-point typeface is 16 points. Therefore, this unit is the same
+    for all typefaces at a given point size.</p>
+    <p>Typographic measurements using this unit are frequently expressed in decimal notation
+    (e.g., 0.7&nbsp;em) or as fractions of 100 or 1000 (e.g. 70/100 em or 700/1000 em).
+    The name &ldquo;em&rdquo; was originally a reference to the width of the capital &ldquo;M&rdquo;
+    in the typeface and size being used, which was often the same as the point size.
+    <a href="http://en.wikipedia.org/wiki/Em_%28typography%29" target="_blank">Wikipedia: Em unit &rarr;</a></p>
+  </div>
+  <div class="em-scale">
+    <div class="em-box s1">0.75em<span>font-size: 0.75em<br />padding: 1em 1.3em</span></div>
+    <div class="em-box s2">1em<span>font-size: 1em<br />padding: 1em 1.3em</span></div>
+    <div class="em-box s3">1.5em<span>font-size: 1.5em<br />padding: 1em 1.3em</span></div>
+    <div class="em-box s4">2em<span>font-size: 2em<br />padding: 1em 1.3em</span></div>
+  </div>
+  <p class="em-note">&#8593; All boxes share <code>padding: 1em</code> &mdash; but the rendered pixels grow because em is relative to each element's own font-size.</p>
+</section>
+
+<hr class="divider" />
+
+<section id="rem-section">
+  <span class="s-tag">03 &mdash; CSS Unit</span>
+  <h2 class="s-title">Rem</h2>
+  <div class="s-body">
+    <p>CSS3 introduces a few new units, including the rem unit, which stands for &ldquo;root em&rdquo;.
+    If this hasn't put you to sleep yet, then let's look at how rem works.</p>
+    <p>The em unit is relative to the font-size of the parent, which causes the compounding issue.
+    The rem unit is relative to the root &mdash; or the <code>html</code> &mdash; element. That means
+    that we can define a single font size on the html element and define all rem units to be a
+    percentage of that.
+    <a href="http://snook.ca/archives/html_and_css/font-size-with-rem" target="_blank">snook.ca: font-size with rem &rarr;</a></p>
+  </div>
+  <div class="rem-cards">
+    <div class="rem-card">
+      <h3>Consistent Scale</h3>
+      <p>Rem ignores ancestor font-sizes, so your type scale stays predictable no matter how deeply nested the element is.</p>
+      <code class="rem-code">h1 { font-size: 2.5rem; }  /* always 40px */</code>
+    </div>
+    <div class="rem-card">
+      <h3>Accessibility Friendly</h3>
+      <p>If a user sets their browser's base font to 20px, every rem value on the page scales accordingly &mdash; it respects their preference automatically.</p>
+      <code class="rem-code">body { font-size: 1rem; }   /* inherits :root */</code>
+    </div>
+    <div class="rem-card">
+      <h3>rem vs em</h3>
+      <p>Use em for component-scoped sizes (button padding relative to button text); use rem for global scale &mdash; headings, section spacing, layout rhythm.</p>
+      <code class="rem-code">padding: 0.75rem 1.5rem;   /* global rhythm */</code>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="box-sizing">
+  <span class="s-tag">04 &mdash; CSS Property</span>
+  <h2 class="s-title">Box-Sizing</h2>
+  <div class="s-body">
+    <p>The <code>box-sizing</code> CSS property is used to alter the default CSS box model used
+    to calculate widths and heights of elements. It is possible to use this property to emulate
+    the behavior of browsers that do not correctly support the CSS box model specification.</p>
+    <p><strong>content-box</strong> (default): width and height include only the content &mdash; not
+    padding, border, or margin. e.g. <code>.box{width:350px}</code> + <code>border:10px</code>
+    = <strong>370px</strong> rendered.</p>
+    <p><strong>border-box</strong>: width and height include padding and border but not margin.
+    e.g. <code>.box{width:350px}</code> + <code>border:10px</code> = <strong>350px</strong> rendered.
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing" target="_blank">MDN: box-sizing &rarr;</a></p>
+  </div>
+  <div class="bs-grid">
+    <div class="bs-panel">
+      <h4>content-box (default)</h4>
+      <div class="box-content">
+        width: 180px<br />+ padding: 18&times;2<br />+ border: 10&times;2<br /><strong>= 236px rendered</strong>
+      </div>
+      <p class="bs-note">Declared 180px &mdash; actually occupies 236px.</p>
+    </div>
+    <div class="bs-panel">
+      <h4>border-box &#10003; recommended</h4>
+      <div class="box-border">
+        width: 180px<br />padding &amp; border<br />are inside that 180px<br /><strong>= 180px rendered</strong>
+      </div>
+      <p class="bs-note">Declared 180px &mdash; takes exactly 180px. Predictable!</p>
+    </div>
+    <div class="bs-panel">
+      <h4>Global reset</h4>
+      <p class="bs-panel-text">When a fluid column is set to <code>width:50%</code>, adding
+      padding with content-box can break the grid. Border-box keeps 50% as the total.
+      That's why the global reset at the top of this page applies:</p>
+      <pre class="bs-pre">*, *::before, *::after {
+  box-sizing: border-box;
+}</pre>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<section id="vw-section">
+  <span class="s-tag">05 &mdash; CSS Unit</span>
+  <h2 class="s-title">VW &mdash; Viewport Width</h2>
+  <div class="s-body">
+    <p>Often times, there are certain elements within our design that we'd like to ensure can fit
+    into the viewport in their entirety. Normally, we'd have to use JavaScript to do this &mdash;
+    check the size of the viewport and then resize any elements on the page accordingly. If the
+    user resizes the browser then the script runs again to resize the elements on the page.</p>
+    <p>With <code>vw</code>/<code>vh</code>, we can size elements to be relative to the size of
+    the viewport. The vw/vh units are interesting in that 1 unit reflects 1/100th the width of
+    the viewport. To make an element the full width of the viewport, for example, you'd set it
+    to <code>width:&nbsp;100vw</code>.
+    <a href="http://snook.ca/archives/html_and_css/vm-vh-units" target="_blank">snook.ca: vw/vh units &rarr;</a></p>
+  </div>
+  <div class="vw-bars">
+    <div class="vw-row"><span class="vw-lbl">10vw</span><div class="vw-fill" style="width:10vw;"></div><span class="vw-val">10% of viewport width</span></div>
+    <div class="vw-row"><span class="vw-lbl">25vw</span><div class="vw-fill" style="width:25vw;"></div><span class="vw-val">25% of viewport width</span></div>
+    <div class="vw-row"><span class="vw-lbl">50vw</span><div class="vw-fill" style="width:50vw;"></div><span class="vw-val">50% of viewport width</span></div>
+    <div class="vw-row"><span class="vw-lbl">75vw</span><div class="vw-fill" style="width:75vw;"></div><span class="vw-val">75% of viewport width</span></div>
+    <div class="vw-row"><span class="vw-lbl">90vw</span><div class="vw-fill" style="width:90vw;"></div><span class="vw-val">90% of viewport width</span></div>
+  </div>
+  <p class="vw-note">&#8593; Every bar above is sized in <strong>vw</strong>. Drag your browser window and they all update instantly &mdash; no JavaScript required.</p>
+</section>
+
+<hr class="divider" />
+
+<section id="pure-section">
+  <span class="s-tag">Pure.css Grid</span>
+  <h2 class="s-title">Putting It All Together</h2>
+  <p class="pure-grid-intro">Pure.css provides a lightweight, mobile-first grid built entirely
+  on percentages. These cards reflow from <strong>1 &rarr; 2 &rarr; 3 columns</strong> as the
+  viewport grows, combining Pure's <code>pure-u-*</code> percentage classes with every fluid
+  technique demonstrated above. Resize the window to see all units working together.</p>
+  <div class="pure-g">
+    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+      <div class="p-card">
+        <img src="fluid07.jpg" alt="Fluid water texture" />
+        <div class="p-card-body">
+          <h3>% Percentages</h3>
+          <p>Column width set via Pure's <code>pure-u-1-3</code> &mdash; one-third of the row, always a percentage.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+      <div class="p-card">
+        <img src="fluid08.jpg" alt="Calm light water" />
+        <div class="p-card-body">
+          <h3>Em &amp; Rem</h3>
+          <p>Card padding in <code>rem</code> for global rhythm. Inner labels scale in <code>em</code>.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pure-u-1 pure-u-md-1-2 pure-u-lg-1-3">
+      <div class="p-card">
+        <img src="fluid01.jpg" alt="Ocean surface" />
+        <div class="p-card-body">
+          <h3>VW &amp; Box-Sizing</h3>
+          <p>Section headings use <code>vw</code> for fluid type. The global <code>border-box</code> reset keeps column math clean.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Fluid Project &nbsp;|&nbsp; CSS Units: <strong>% &nbsp; em &nbsp; rem &nbsp; box-sizing &nbsp; vw</strong></p>
+  <p>Built with <a href="https://purecss.io/" target="_blank">Pure.css</a> &nbsp;|&nbsp; &ldquo;Be like water.&rdquo; &mdash; Bruce Lee</p>
+</footer>
+
+</body>
+</html>

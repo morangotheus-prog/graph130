@@ -1,0 +1,252 @@
+/* ============================================
+   Cascade Range — External Stylesheet
+   Graph 130 Web Coding Project
+   ============================================ */
+
+/* --- Reset & Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- CSS Variables --- */
+:root {
+  --forest:    #1a2e1a;
+  --pine:      #2d4a2d;
+  --sage:      #5a7a4a;
+  --mist:      #c8d8c0;
+  --snow:      #f4f0e8;
+  --stone:     #7a8a7a;
+  --dusk:      #3a2a1a;
+  --accent:    #8b4513;
+  --gold:      #c8960a;
+  --text-dark: #1a1a14;
+  --text-mid:  #3a3a2a;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Source Serif 4', Georgia, serif;
+
+  --radius: 2px;
+  --shadow: 0 4px 24px rgba(10,20,10,0.35);
+}
+
+/* --- Body & Fixed Background --- */
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-dark);
+  background-image: url('cascade_mountains-bg.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+/* --- Header --- */
+header {
+  background-color: rgba(26, 46, 26, 0.82);
+  backdrop-filter: blur(6px);
+  color: var(--snow);
+  text-align: center;
+  padding: 3.5rem 2rem 3rem;
+  border-bottom: 3px solid var(--gold);
+}
+
+header h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+}
+
+.header-sub {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  color: var(--mist);
+  letter-spacing: 0.08em;
+}
+
+/* --- Navigation --- */
+nav {
+  background-color: rgba(45, 74, 45, 0.90);
+  backdrop-filter: blur(4px);
+  border-bottom: 2px solid var(--sage);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+}
+
+nav ul li a {
+  display: block;
+  padding: 0.85rem 2.5rem;
+  color: var(--mist);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+  border-right: 1px solid rgba(90,122,74,0.4);
+}
+
+nav ul li:first-child a { border-left: 1px solid rgba(90,122,74,0.4); }
+
+nav ul li a:hover {
+  background-color: rgba(200, 150, 10, 0.25);
+  color: var(--gold);
+}
+
+/* --- Page Wrapper: article + aside float layout --- */
+.page-wrapper {
+  max-width: 1100px;
+  margin: 2.5rem auto;
+  padding: 0 1.5rem;
+  overflow: hidden; /* clearfix for float */
+}
+
+/* --- Aside (floated right) --- */
+aside {
+  float: right;
+  width: 30%;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+.aside-section {
+  background-color: rgba(244, 240, 232, 0.88);
+  backdrop-filter: blur(3px);
+  border-left: 4px solid var(--sage);
+  border-radius: var(--radius);
+  padding: 1.4rem 1.2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.aside-section h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--forest);
+  margin-bottom: 0.6rem;
+  border-bottom: 1px solid var(--mist);
+  padding-bottom: 0.4rem;
+}
+
+.aside-section p {
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--text-mid);
+}
+
+/* --- Article --- */
+article {
+  overflow: hidden; /* sits beside floated aside */
+}
+
+/* --- Sections inside article --- */
+section {
+  background-color: rgba(244, 240, 232, 0.88);
+  backdrop-filter: blur(3px);
+  border-radius: var(--radius);
+  padding: 2rem 2.2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow);
+}
+
+section h2 {
+  font-family: var(--font-display);
+  font-size: 1.7rem;
+  color: var(--forest);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--sage);
+}
+
+section p {
+  margin-bottom: 1rem;
+  color: var(--text-dark);
+}
+
+section p:last-of-type {
+  margin-bottom: 0;
+}
+
+/* --- Figures --- */
+figure {
+  margin: 1.5rem 0 0.5rem;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+  border: 3px solid var(--mist);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 18px rgba(10,20,10,0.28);
+  display: block;
+  margin: 0 auto;
+}
+
+figcaption {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--stone);
+  margin-top: 0.5rem;
+}
+
+.aside-section figure img {
+  max-width: 100%;
+}
+
+/* --- Footer --- */
+footer {
+  background-color: rgba(26, 46, 26, 0.88);
+  backdrop-filter: blur(6px);
+  color: var(--mist);
+  text-align: center;
+  padding: 1.8rem 2rem;
+  border-top: 3px solid var(--gold);
+  font-size: 0.88rem;
+  line-height: 1.9;
+  clear: both;
+}
+
+footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive: stack aside below article on small screens --- */
+@media (max-width: 720px) {
+  aside {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li a {
+    border-right: none;
+    border-bottom: 1px solid rgba(90,122,74,0.4);
+    width: 100%;
+    text-align: center;
+  }
+  nav ul li:first-child a { border-left: none; }
+}
