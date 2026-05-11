@@ -64,9 +64,6 @@ body {
   padding: 0.75rem 1rem;
 }
 
-/* ══════════════════════════════
-   DARK UNITS SECTION
-══════════════════════════════ */
 .dark-section {
   background: #1e1a14;
   color: #ddd;
@@ -117,9 +114,6 @@ body {
   text-decoration: underline;
 }
 
-/* ══════════════════════════════
-   FOOTER
-══════════════════════════════ */
 .footer {
   background: #111;
   color: #777;
@@ -128,9 +122,6 @@ body {
   border-top: 1px solid #2a2a2a;
 }
 
-/* ══════════════════════════════
-   RESPONSIVE
-══════════════════════════════ */
 @media (max-width: 900px) {
   .hero {
     flex-direction: column;
