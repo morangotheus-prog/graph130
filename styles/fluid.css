@@ -1,0 +1,160 @@
+/* ── RESET ── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  background: #fff;
+  color: #111;
+}
+
+/* ══════════════════════════════
+   HERO SECTION
+══════════════════════════════ */
+.hero {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 2rem;
+  gap: 2rem;
+  max-width: 100%;
+}
+
+.hero-text {
+  flex: 1 1 60%;
+}
+
+.hero-text h1 {
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.hero-image {
+  flex: 0 0 35%;
+  position: relative;
+}
+
+.hero-image img {
+  width: 100%;
+  display: block;
+}
+
+.quote-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 1.6;
+  padding: 0.75rem 1rem;
+}
+
+/* ══════════════════════════════
+   DARK UNITS SECTION
+══════════════════════════════ */
+.dark-section {
+  background: #1e1a14;
+  color: #ddd;
+  padding: 2rem 1.5rem;
+}
+
+.units-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+}
+
+.unit-col {
+  padding: 0 1.25rem 1rem;
+  border-right: 1px solid #3a3530;
+}
+
+.unit-col:last-child {
+  border-right: none;
+}
+
+.unit-col h2 {
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.07em;
+  color: #e8d8b0;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid #4a4030;
+}
+
+.unit-col p {
+  font-size: 0.8rem;
+  line-height: 1.65;
+  color: #c8c0b0;
+}
+
+.unit-col a {
+  color: #a8c0d8;
+  text-decoration: none;
+  font-size: 0.78rem;
+  display: inline-block;
+  margin-top: 0.4rem;
+}
+
+.unit-col a:hover {
+  text-decoration: underline;
+}
+
+/* ══════════════════════════════
+   FOOTER
+══════════════════════════════ */
+.footer {
+  background: #111;
+  color: #777;
+  padding: 1rem 1.5rem;
+  font-size: 0.85rem;
+  border-top: 1px solid #2a2a2a;
+}
+
+/* ══════════════════════════════
+   RESPONSIVE
+══════════════════════════════ */
+@media (max-width: 900px) {
+  .hero {
+    flex-direction: column;
+  }
+
+  .hero-image {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+
+  .units-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .unit-col {
+    border-right: none;
+    border-bottom: 1px solid #3a3530;
+    padding-bottom: 1.25rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .units-grid {
+    grid-template-columns: 1fr;
+  }
+}
