@@ -1,0 +1,8 @@
+/* min-width: 961px - larger desktops */
+@media screen and (min-width:961px) {
+    body {
+        background-color: blue;
+        color: white;
+        font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+    }
+}

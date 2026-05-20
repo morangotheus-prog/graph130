@@ -1,0 +1,8 @@
+/* min-width: 962px and max-width: 1281px - small desktops/laptops */
+@media screen and (min-width:962px) and (max-width:1281px) {
+    body {
+        background-color: orange;
+        color: black;
+        font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+    }
+}
