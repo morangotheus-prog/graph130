@@ -1,0 +1,155 @@
+/* =================================================================
+   OLYMPIC MOUNTAINS  -  Responsive stylesheet
+   Mobile-first: base styles below apply to phones.
+   Two media queries add layout for tablet (641px+) and desktop (1024px+).
+   ================================================================= */
+
+/* ---------- Reset / global ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Roboto Slab", Georgia, serif;
+    font-weight: 300;
+    color: #34495e;
+    line-height: 1.6;
+    background-color: #f4f6f7;
+}
+
+/* ---------- Headings ---------- */
+h1 {
+    font-family: "Cabin Sketch", cursive;
+    font-size: 2.2rem;
+    color: #2a93a5;
+    line-height: 1.1;
+}
+
+h2 {
+    font-family: "Cabin Sketch", cursive;
+    font-size: 1.3rem;
+    color: #2a93a5;
+    margin-bottom: 0.5rem;
+}
+
+h3 {
+    color: #2a93a5;
+    font-weight: 700;
+    margin: 1.2rem 0 0.4rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* ---------- Header ---------- */
+header {
+    padding: 1rem;
+}
+
+/* ---------- Navigation (MOBILE: stacked, full-width bars) ---------- */
+nav ul {
+    list-style: none;
+}
+
+nav li {
+    border-bottom: 2px solid #fff;
+}
+
+nav a {
+    display: block;            /* full-width tappable bar on mobile */
+    background-color: #2a93a5;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    padding: 0.9rem;
+    font-size: 1.1rem;
+}
+
+nav a:hover {
+    background-color: #1f7180;
+}
+
+/* ---------- Content ---------- */
+.content {
+    padding: 1rem;
+}
+
+figure {
+    margin: 1rem 0;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+figcaption {
+    font-size: 0.85rem;
+    color: #777;
+    margin-top: 0.25rem;
+}
+
+
+/* =================================================================
+   TABLET MEDIA QUERY  -  641px and up
+   Nav becomes a single horizontal row; content sits in a column.
+   ================================================================= */
+@media screen and (min-width: 641px) {
+
+    .container {
+        width: 100%;
+        max-width: 900px;
+        margin: 0 auto;
+        background-color: rgba(255, 255, 255, 0.85);
+    }
+
+    nav ul {
+        display: flex;
+        justify-content: center;
+        background-color: #2a93a5;
+    }
+
+    nav li {
+        border-bottom: none;
+    }
+
+    nav a {
+        display: inline-block;
+        padding: 0.9rem 1.5rem;
+    }
+
+    .content {
+        padding: 1.5rem 2rem;
+    }
+}
+
+
+/* =================================================================
+   DESKTOP / FULL-SIZED MEDIA QUERY  -  1024px and up
+   Body text flows into two columns, like the in-class demo.
+   ================================================================= */
+@media screen and (min-width: 1024px) {
+
+    .container {
+        max-width: 1100px;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    .content {
+        column-count: 2;
+        column-gap: 2.5rem;
+    }
+
+    /* keep headings and the image from being split across columns */
+    .content h3,
+    .content figure {
+        break-inside: avoid;
+    }
+}
