@@ -16,7 +16,11 @@ body {
     font-weight: 300;
     color: #34495e;
     line-height: 1.6;
-    background-color: #f4f6f7;
+    background-image: url("../images/background.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #bfe3ec; /* fallback if image is missing */
 }
 
 /* ---------- Headings ---------- */
@@ -42,6 +46,12 @@ h3 {
 
 p {
     margin-bottom: 1rem;
+}
+
+/* ---------- Container (white panel that sits over the photo) ---------- */
+.container {
+    background-color: rgba(255, 255, 255, 0.85);
+    min-height: 100vh;
 }
 
 /* ---------- Header ---------- */
@@ -104,7 +114,6 @@ figcaption {
         width: 100%;
         max-width: 900px;
         margin: 0 auto;
-        background-color: rgba(255, 255, 255, 0.85);
     }
 
     nav ul {
