@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Sports Graphic Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#101010;
+    --ink:#f4f4f6;
+    --muted:#8a8a96;
+    --line:#22222b;
+    --accent:#00a859;     /* verde bandeira */
+    --accent-2:#ffd800;   /* amarelo bandeira */
+    --accent-3:#1c3f95;   /* azul bandeira */
+    --card:#131318;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--ink);font-family:'Archivo',sans-serif;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--accent-2);color:#000}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:999;opacity:.035;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;
+    padding:18px 28px;backdrop-filter:blur(14px);background:rgba(10,10,12,.6);border-bottom:1px solid var(--line)}
+  nav::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--accent) 0 33%,var(--accent-2) 33% 66%,var(--accent-3) 66% 100%)}
+  nav .brand{font-family:'Anton';font-size:20px;letter-spacing:1px}
+  nav .brand span{color:var(--accent)}
+  nav .links{display:flex;gap:26px}
+  nav .links a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:1px;transition:color .2s}
+  nav .links a:hover{color:var(--ink)}
+  @media(max-width:760px){nav .links{display:none}}
+
+  header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;position:relative;padding-top:80px;
+    background:radial-gradient(800px 400px at 80% 10%,rgba(0,168,89,.10),transparent 60%),radial-gradient(600px 500px at 10% 90%,rgba(255,216,0,.07),transparent 60%)}
+  .hero-tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);
+    border:1px solid var(--accent);padding:7px 14px;border-radius:40px;margin-bottom:28px;opacity:0;animation:rise .8s .1s forwards}
+  h1.hero{font-family:'Anton';font-size:clamp(56px,11vw,150px);line-height:.9;letter-spacing:-1px;text-transform:uppercase}
+  h1.hero .l{display:block;overflow:hidden}
+  h1.hero .l span{display:block;transform:translateY(110%);animation:slideUp .9s cubic-bezier(.16,1,.3,1) forwards}
+  h1.hero .l:nth-child(2) span{animation-delay:.12s;color:var(--accent-2)}
+  h1.hero .l:nth-child(3) span{animation-delay:.24s}
+  .hero-sub{margin-top:28px;max-width:560px;font-size:17px;line-height:1.6;color:var(--muted);opacity:0;animation:rise .8s .5s forwards}
+  .hero-sub strong{color:var(--ink);font-weight:700}
+  .hero-meta{display:flex;gap:42px;margin-top:48px;flex-wrap:wrap;opacity:0;animation:rise .8s .7s forwards}
+  .hero-meta .stat .n{font-family:'Anton';font-size:38px;color:var(--accent-2)}
+  .hero-meta .stat .t{font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted)}
+  .scroll-hint{position:absolute;bottom:34px;left:28px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);opacity:0;animation:rise .8s 1s forwards}
+  .scroll-hint::after{content:"↓";display:block;font-size:18px;margin-top:6px;animation:bounce 1.6s infinite}
+
+  section{padding:110px 0;border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:48px;gap:20px;flex-wrap:wrap}
+  .sec-num{font-family:'Anton';font-size:14px;color:var(--accent);letter-spacing:2px}
+  .sec-title{font-family:'Anton';font-size:clamp(34px,6vw,68px);text-transform:uppercase;line-height:.95;letter-spacing:-1px}
+  .sec-desc{max-width:360px;color:var(--muted);font-size:15px;line-height:1.6;text-align:right}
+  @media(max-width:760px){.sec-desc{text-align:left}}
+
+  .grid{display:grid;gap:18px}
+  .grid.three{grid-template-columns:repeat(3,1fr)}
+  .grid.two{grid-template-columns:repeat(2,1fr)}
+  @media(max-width:900px){.grid.three{grid-template-columns:repeat(2,1fr)}}
+  @media(max-width:620px){.grid.three,.grid.two{grid-template-columns:1fr}}
+
+  .card{position:relative;border-radius:14px;overflow:hidden;background:var(--card);border:1px solid var(--line);
+    aspect-ratio:4/5;cursor:pointer;transition:transform .35s cubic-bezier(.16,1,.3,1),border-color .35s}
+  .card.wide{aspect-ratio:16/10}
+  .card:hover{transform:translateY(-6px);border-color:var(--accent)}
+  .card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+  .card:hover img{transform:scale(1.06)}
+  .card .placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    gap:10px;text-align:center;padding:20px;background:linear-gradient(145deg,#16161d,#0d0d12)}
+  .card .placeholder .ico{font-family:'Anton';font-size:30px;color:var(--line)}
+  .card .placeholder .lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+  .card .placeholder .hint{font-size:10px;color:#4a4a55;max-width:160px;line-height:1.4}
+  .card .meta{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(transparent,rgba(0,0,0,.85));
+    transform:translateY(8px);opacity:0;transition:.35s}
+  .card:hover .meta{transform:translateY(0);opacity:1}
+  .card .meta .t{font-family:'Archivo';font-weight:800;font-size:15px}
+  .card .meta .c{font-size:12px;color:var(--accent);text-transform:uppercase;letter-spacing:1px}
+
+  .logo-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media(max-width:620px){.logo-grid{grid-template-columns:1fr}}
+  .logo-card{background:radial-gradient(circle at 50% 40%,#17171f,#0c0c10);border:1px solid var(--line);border-radius:16px;
+    aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;transition:border-color .3s}
+  .logo-card:hover{border-color:var(--accent)}
+  .logo-card img{max-width:62%;max-height:62%;object-fit:contain}
+  .logo-card .placeholder{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;padding:20px}
+  .logo-card .placeholder .ring{width:88px;height:88px;border-radius:50%;border:2px dashed var(--line);
+    display:flex;align-items:center;justify-content:center;font-family:'Anton';font-size:28px;color:var(--line)}
+  .logo-card .placeholder .lbl{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+  .logo-card .tag{position:absolute;top:16px;left:16px;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+  .logo-card .name{position:absolute;bottom:16px;left:0;right:0;text-align:center;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:start}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:40px}}
+  .about-grid p{font-size:18px;line-height:1.75;color:#cfcfd6;margin-bottom:20px}
+  .about-grid p strong{color:var(--accent)}
+  .skill-list{list-style:none}
+  .skill-list li{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);
+    font-size:14px;font-weight:600;text-transform:uppercase;letter-spacing:1px}
+  .skill-list li span{color:var(--muted)}
+
+  .contact{text-align:center;padding:120px 0}
+  .contact .big{font-family:'Anton';font-size:clamp(40px,9vw,110px);text-transform:uppercase;line-height:.95;letter-spacing:-1px}
+  .contact .big a{color:var(--accent-2);text-decoration:none;transition:opacity .2s}
+  .contact .big a:hover{opacity:.7}
+  .contact-info{display:flex;gap:30px;justify-content:center;margin-top:40px;flex-wrap:wrap}
+  .contact-info a{color:var(--muted);text-decoration:none;font-size:14px;letter-spacing:1px;text-transform:uppercase;font-weight:600;transition:color .2s}
+  .contact-info a:hover{color:var(--ink)}
+
+  footer{position:relative;padding:34px 0;border-top:1px solid var(--line);text-align:center;color:#4a4a55;font-size:12px;letter-spacing:1px}
+  footer::before{content:"";position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:120px;height:3px;
+    background:linear-gradient(90deg,var(--accent) 0 33%,var(--accent-2) 33% 66%,var(--accent-3) 66% 100%)}
+
+  .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s}
+  .reveal.in{opacity:1;transform:none}
+  @keyframes slideUp{to{transform:translateY(0)}}
+  @keyframes rise{to{opacity:1;transform:none}}
+  @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+  /* ===== LIGHTBOX ===== */
+  .card img, .logo-card img{cursor:zoom-in}
+  #lightbox{
+    position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;
+    padding:32px;background:rgba(6,6,8,0);backdrop-filter:blur(0px);
+    opacity:0;pointer-events:none;transition:opacity .35s ease,background .35s ease,backdrop-filter .35s ease;
+  }
+  #lightbox.open{opacity:1;pointer-events:auto;background:rgba(6,6,8,.92);backdrop-filter:blur(8px)}
+  #lightbox .lb-stage{position:relative;max-width:92vw;max-height:90vh;display:flex;flex-direction:column;align-items:center;gap:14px}
+  #lightbox img{
+    max-width:92vw;max-height:82vh;object-fit:contain;border-radius:12px;
+    box-shadow:0 30px 80px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.08);
+    transform:scale(.85);opacity:0;transition:transform .4s cubic-bezier(.16,1,.3,1),opacity .4s;
+    cursor:zoom-out;
+  }
+  #lightbox.open img{transform:scale(1);opacity:1}
+  #lightbox .lb-cap{
+    color:var(--ink);font-size:13px;letter-spacing:1px;text-transform:uppercase;text-align:center;
+    opacity:0;transition:opacity .4s .15s;
+  }
+  #lightbox.open .lb-cap{opacity:1}
+  #lightbox .lb-cap b{color:var(--accent);font-weight:700;margin-right:10px}
+  #lightbox .lb-close{
+    position:absolute;top:-46px;right:0;width:38px;height:38px;border-radius:50%;
+    border:1px solid var(--line);background:rgba(20,20,24,.8);color:var(--ink);
+    font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;
+    transition:border-color .2s,transform .2s;
+  }
+  #lightbox .lb-close:hover{border-color:var(--accent);transform:rotate(90deg)}
+  #lightbox .lb-nav{
+    position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;
+    border:1px solid var(--line);background:rgba(20,20,24,.7);color:var(--ink);font-size:22px;
+    cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,background .2s;z-index:5;
+  }
+  #lightbox .lb-nav:hover{border-color:var(--accent);background:rgba(30,30,36,.9)}
+  #lightbox .lb-prev{left:-66px}
+  #lightbox .lb-next{right:-66px}
+  @media(max-width:760px){
+    #lightbox .lb-prev{left:6px}
+    #lightbox .lb-next{right:6px}
+    #lightbox .lb-close{top:-44px;right:6px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================================================================= -->
+<!--   EDIT EVERYTHING HERE  (this block only)                         -->
+<!--   * Change any text between the quotes.                           -->
+<!--   * Add a project: copy one  { img:"", title:"", tag:"" }  line.  -->
+<!--   * Remove a project: delete its line.                            -->
+<!--   * Add an image: drop the file in the SAME folder as this file   -->
+<!--     and write its name in "img", e.g. img:"matchday-1.jpg".       -->
+<!--   * Leave img:"" to keep an empty placeholder slot.               -->
+<!-- ================================================================= -->
+<script>
+const CONFIG = {
+
+  /* YOUR DETAILS */
+  firstName: "THEUS",
+  lastName:  "PSD",
+  role:      "Graphic Designer Portfolio",
+
+  heroLine1: "Design that",
+  heroLine2: "plays to",
+  heroLine3: "win.",
+
+  heroText: "Graphic designer specialized in <strong>sports content for Instagram</strong> — matchday graphics, transfer announcements and feature artwork built to stop the scroll.",
+
+  stats: [
+    { n: "17+", t: "Designs delivered" },
+    { n: "3",   t: "Categories" },
+    { n: "1x",  t: "Champions artwork" },
+  ],
+
+  about1: "I'm a graphic designer focused on <strong>sports design for social media</strong>. My work lives on Instagram, where every piece has to stop the fan's thumb mid-scroll and capture the emotion of the game in seconds.",
+  about2: "I take projects from brief to final delivery — typography, hierarchy, image treatment and consistent brand visuals. I also design full visual identities.",
+
+  skills: [
+    { name: "Sports Design",    level: "Expert" },
+    { name: "Social Media",     level: "Expert" },
+    { name: "Visual Identity",  level: "Intermediate" },
+    { name: "Photoshop",        level: "Expert" },
+    { name: "Illustrator",      level: "Intermediate" },
+    { name: "Image Retouching", level: "Intermediate" },
+  ],
+
+  /* CONTACT */
+  email:          "morangotheus@gmail.com",
+  instagram:      "@theus.psd",
+  instagramUrl:   "https://instagram.com/theus.psd  ",
+  portfolioUrl:   "#",
+  portfolioLabel: "Behance",
+
+  /* ================= PROJECT SECTIONS ================= */
+  sections: [
+    {
+      id: "matchday",
+      num: "01 — Work",
+      title: "Matchday<br>& Game Day",
+      desc: "Game day posts: line-ups, fixtures and match hype. The artwork that drives the most engagement on a club's feed.",
+      layout: "three",
+      projects: [
+        { img: "images/matchday-bellevue.jpg",   title: "Matchday — vs Bellevue",   tag: "Matchday" },
+        { img: "images/matchday-bafc.jpg",        title: "Matchday — vs Dalul FC",       tag: "Matchday" },
+        { img: "images/matchday-dalul.jpg",       title: "Matchday — vs Peninsula CC",   tag: "Matchday" },
+        { img: "images/welcome-trojan.jpg",  title: "Matchday — vs BAFC2",      tag: "Matchday" },
+        { img: "images/matchday-too.jpg",         title: "Matchday — Storys",         tag: "Matchday" },
+        { img: "images/starting-xi.jpg",          title: "T-Trophy Matchday",              tag: "Matchday" },
+        { img: "images/14EF19A3-075C-4038-B274-8B8A068638C7.png",      title: "Alumni Matchday",          tag: "Matchday" },
+      ]
+    },
+    {
+      id: "transfers",
+      num: "02 — Work",
+      title: "Signings<br>& Schedules",
+      desc: "Signing announcements, squad reveals and roster drops — the moments fans wait for, turned into high-impact artwork.",
+      layout: "three",
+      projects: [
+        { img: "images/full-time.jpg",  title: "Welcome — New Signing",  tag: "Signing" },
+        { img: "images/19F07611-E824-4871-AF94-D4F747DDC000.png",   title: "Spring Season Schedule",          tag: "Schedule" },
+        { img: "images/schedule-2025.jpg",   title: "Season Schedule 2025",   tag: "Schedule" },
+      ]
+    },
+    {
+      id: "features",
+      num: "03 — Work",
+      title: "Covers, Results<br>& Features",
+      desc: "Player features, full-time results and championship artwork — where the most creative, conceptual side of the work comes through.",
+      layout: "two",
+      projects: [
+        { img: "images/champions.jpg",          title: "BAFC Full-Time",                 tag: "Full-Time" },
+        { img: "images/first-team-allconf.jpg", title: "Sophmore Spotlight", tag: "Feature" },
+        { img: "images/vs-peninsula.jpg",        title: "NWAC First Team",           tag: "Award" },
+        { img: "images/sophomore-spotlight.jpg", title: "Sophomore Day",       tag: "Feature" },
+        { img: "images/trojans-win.jpg",         title: "LineUp Storys",         tag: "LineUp" },
+        { img: "images/E169E46A-868D-4ADA-9F6F-5DA47532C048.png",           title: "Transfer Confirmed",           tag: "Feature" },
+      ]
+    },
+  ],
+
+  /* ================= LOGOS ================= */
+  logos: [
+    { img: "images/WhatsApp Image 2026-05-29 at 00.04.06.png", name: "Everett College Men's Soccer" },
+    { img: "images/MAYCON.png", name: "Alves Clean" },
+  ],
+};
+</script>
+<!-- ================================================================= -->
+<!--   STOP EDITING HERE — everything below builds itself              -->
+<!-- ================================================================= -->
+
+
+<nav>
+  <div class="brand" id="navBrand"></div>
+  <div class="links">
+    <a href="#matchday">Matchday</a>
+    <a href="#transfers">Signings</a>
+    <a href="#features">Covers</a>
+    <a href="#logos">Logos</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header>
+  <div class="wrap">
+    <span class="hero-tag" id="heroTag"></span>
+    <h1 class="hero">
+      <span class="l"><span id="hl1"></span></span>
+      <span class="l"><span id="hl2"></span></span>
+      <span class="l"><span id="hl3"></span></span>
+    </h1>
+    <p class="hero-sub" id="heroText"></p>
+    <div class="hero-meta" id="heroMeta"></div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<main id="sections"></main>
+
+<section id="logos">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <div class="sec-num">04 — Identity</div>
+        <h2 class="sec-title">Logos</h2>
+      </div>
+      <p class="sec-desc">Beyond social content, I also build visual identities — crests and logo systems designed from concept to final mark.</p>
+    </div>
+    <div class="logo-grid" id="logoGrid"></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div><div class="sec-num">05 — About</div><h2 class="sec-title">Who<br>I am</h2></div>
+    </div>
+    <div class="about-grid reveal">
+      <div><p id="about1"></p><p id="about2"></p></div>
+      <ul class="skill-list" id="skillList"></ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap reveal">
+    <div class="big">Let's work<br> <a id="contactMail">together?</a></div>
+    <div class="contact-info" id="contactInfo"></div>
+  </div>
+</section>
+
+<div id="lightbox" role="dialog" aria-modal="true">
+  <div class="lb-stage">
+    <button class="lb-close" aria-label="Close">&times;</button>
+    <button class="lb-nav lb-prev" aria-label="Previous">&#8249;</button>
+    <button class="lb-nav lb-next" aria-label="Next">&#8250;</button>
+    <img id="lbImg" src="" alt="">
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
+</div>
+
+<footer id="footer"></footer>
+
+<script>
+  const C = CONFIG;
+
+  document.getElementById('navBrand').innerHTML = C.firstName + '<span>' + C.lastName + '</span>';
+  document.getElementById('heroTag').textContent = C.role;
+  document.getElementById('hl1').textContent = C.heroLine1;
+  document.getElementById('hl2').textContent = C.heroLine2;
+  document.getElementById('hl3').textContent = C.heroLine3;
+  document.getElementById('heroText').innerHTML = C.heroText;
+  document.getElementById('heroMeta').innerHTML = C.stats.map(s =>
+    `<div class="stat"><div class="n">${s.n}</div><div class="t">${s.t}</div></div>`).join('');
+
+  function cardHTML(p, layout){
+    const wide = layout === 'two' ? ' wide' : '';
+    const inner = p.img
+      ? `<img src="${p.img}" alt="${p.title}">`
+      : `<div class="placeholder"><div class="ico">◦</div><div class="lbl">${p.tag}</div><div class="hint">Set "img" in CONFIG to add your file</div></div>`;
+    return `<div class="card${wide} reveal">${inner}
+      <div class="meta"><div class="c">${p.tag}</div><div class="t">${p.title}</div></div></div>`;
+  }
+  document.getElementById('sections').innerHTML = C.sections.map(sec => `
+    <section id="${sec.id}">
+      <div class="wrap">
+        <div class="sec-head reveal">
+          <div><div class="sec-num">${sec.num}</div><h2 class="sec-title">${sec.title}</h2></div>
+          <p class="sec-desc">${sec.desc}</p>
+        </div>
+        <div class="grid ${sec.layout}">
+          ${sec.projects.map(p => cardHTML(p, sec.layout)).join('')}
+        </div>
+      </div>
+    </section>`).join('');
+
+  document.getElementById('logoGrid').innerHTML = C.logos.map((l,i) => {
+    const inner = l.img
+      ? `<img src="${l.img}" alt="${l.name}">`
+      : `<div class="placeholder"><div class="ring">0${i+1}</div><div class="lbl">Set "img" to add your logo</div></div>`;
+    return `<div class="logo-card reveal"><span class="tag">Logo 0${i+1}</span>${inner}
+      <span class="name">${l.name}</span></div>`;
+  }).join('');
+
+  document.getElementById('about1').innerHTML = C.about1;
+  document.getElementById('about2').innerHTML = C.about2;
+  document.getElementById('skillList').innerHTML = C.skills.map(s =>
+    `<li>${s.name} <span>${s.level}</span></li>`).join('');
+
+  document.getElementById('contactMail').href = 'mailto:' + C.email;
+  document.getElementById('contactInfo').innerHTML =
+    `<a href="mailto:${C.email}">${C.email}</a>
+     <a href="${C.instagramUrl}" target="_blank">${C.instagram}</a>
+     <a href="${C.portfolioUrl}" target="_blank">${C.portfolioLabel}</a>`;
+  document.getElementById('footer').textContent =
+    `© 2026 — ${C.firstName} ${C.lastName} · ${C.role}`;
+
+  const obs = new IntersectionObserver(e => {
+    e.forEach(x => { if(x.isIntersecting){ x.target.classList.add('in'); obs.unobserve(x.target);} });
+  }, { threshold:.12 });
+  document.querySelectorAll('.reveal').forEach((el,i) => {
+    el.style.transitionDelay = (i % 4 * 0.08) + 's';
+    obs.observe(el);
+  });
+
+  /* ===== LIGHTBOX LOGIC ===== */
+  (function(){
+    const lb     = document.getElementById('lightbox');
+    const lbImg  = document.getElementById('lbImg');
+    const lbCap  = document.getElementById('lbCap');
+    const btnX   = lb.querySelector('.lb-close');
+    const btnPrev= lb.querySelector('.lb-prev');
+    const btnNext= lb.querySelector('.lb-next');
+
+    // collect every gallery image (project cards + logos) in DOM order
+    let items = [], current = 0;
+    function refresh(){
+      items = [...document.querySelectorAll('.card img, .logo-card img')];
+    }
+    function show(i){
+      if(!items.length) return;
+      current = (i + items.length) % items.length;
+      const el = items[current];
+      lbImg.src = el.getAttribute('src');
+      lbImg.alt = el.getAttribute('alt') || '';
+      const tag = el.alt ? '' : '';
+      lbCap.innerHTML = el.alt ? `<b>${current+1}/${items.length}</b> ${el.alt}` : `<b>${current+1}/${items.length}</b>`;
+    }
+    function open(i){
+      refresh();
+      show(i);
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function close(){
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(()=>{ if(!lb.classList.contains('open')) lbImg.src=''; }, 400);
+    }
+
+    // open on click (event delegation, works for dynamically built cards)
+    document.addEventListener('click', e => {
+      const img = e.target.closest('.card img, .logo-card img');
+      if(img){
+        refresh();
+        open(items.indexOf(img));
+      }
+    });
+
+    btnX.addEventListener('click', e => { e.stopPropagation(); close(); });
+    btnPrev.addEventListener('click', e => { e.stopPropagation(); show(current-1); });
+    btnNext.addEventListener('click', e => { e.stopPropagation(); show(current+1); });
+    lbImg.addEventListener('click', e => { e.stopPropagation(); close(); });
+    lb.addEventListener('click', () => close());           // click on backdrop closes
+    lb.querySelector('.lb-stage').addEventListener('click', e => e.stopPropagation());
+
+    document.addEventListener('keydown', e => {
+      if(!lb.classList.contains('open')) return;
+      if(e.key === 'Escape')      close();
+      if(e.key === 'ArrowLeft')   show(current-1);
+      if(e.key === 'ArrowRight')  show(current+1);
+    });
+  })();
+</script>
+</body>
+</html>
