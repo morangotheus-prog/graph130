@@ -1,19 +1,45 @@
 @charset "UTF-8";
-/* CSS Document */
+/* CSS Document - Large (1024px+) */
 
 body {
-    background-image: url(../images/cascade_mountains-bg.jpg);
+  background-image: url(../images/cascade_mountains-bg.jpg);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-.container {
-    width: 60%;
-    background-color: rgba(255, 255, 255, 0.7);
+.page-wrapper {
+  width: 80%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  width: 80%;
+  max-width: 1200px;
+}
+
+nav {
+  width: 80%;
+  max-width: 1200px;
+}
+
+footer {
+  width: 80%;
+  max-width: 1200px;
+}
+
+.content {
+  width: 65%;
+}
+
+.sidebar {
+  width: 31%;
 }
 
 .image-right {
-    float: right;
+  float: right;
 }
 
 .image-left {
-    float: left;
+  float: left;
 }
